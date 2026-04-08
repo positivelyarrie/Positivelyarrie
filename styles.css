@@ -39,8 +39,7 @@ body::before {
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 90%);
 }
 
-.paint-cursor,
-.paint-droplets {
+.paint-cursor {
   position: fixed;
   inset: 0;
   z-index: 30;
@@ -56,34 +55,55 @@ body::before {
   transition: opacity 180ms ease;
 }
 
-.paint-cursor-splash {
+.cursor-pencil {
   position: absolute;
-  left: -18px;
-  top: -10px;
-  width: 52px;
-  height: 52px;
-  border-radius: 56% 44% 60% 40% / 48% 37% 63% 52%;
-  background:
-    radial-gradient(circle at 72% 30%, rgba(252, 191, 73, 0.9) 0 10%, transparent 11%),
-    radial-gradient(circle at 82% 58%, rgba(247, 127, 0, 0.8) 0 14%, transparent 15%),
-    radial-gradient(circle at 28% 72%, rgba(58, 134, 255, 0.45) 0 12%, transparent 13%),
-    radial-gradient(circle at 34% 28%, rgba(131, 56, 236, 0.42) 0 11%, transparent 12%),
-    radial-gradient(circle at 48% 50%, rgba(214, 40, 40, 0.88) 0 42%, rgba(214, 40, 40, 0.18) 62%, transparent 72%);
-  filter: blur(0.4px) drop-shadow(0 8px 12px rgba(0, 0, 0, 0.12));
-  transform: translate(-55%, -10%) rotate(-12deg);
-  opacity: 0.98;
+  left: -4px;
+  top: -3px;
+  width: 22px;
+  height: 22px;
+  transform: rotate(-32deg);
 }
 
-.paint-droplet {
+.cursor-pencil-tip,
+.cursor-pencil-body,
+.cursor-pencil-eraser {
   position: absolute;
+}
+
+.cursor-pencil-tip {
+  left: 0;
+  top: 8px;
+  width: 0;
+  height: 0;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-right: 7px solid #111111;
+}
+
+.cursor-pencil-body {
+  left: 6px;
+  top: 7px;
+  width: 12px;
+  height: 8px;
+  border: 1.5px solid #111111;
   border-radius: 999px;
-  filter: blur(0.2px);
-  animation: droplet-fade 900ms ease-out forwards;
+  background:
+    linear-gradient(90deg, #ffffff 0%, #ffffff 54%, #111111 54%, #111111 60%, #ffffff 60%, #ffffff 100%);
 }
 
-.paint-cursor.is-pressed .paint-cursor-splash {
-  opacity: 1;
-  transform: translate(-55%, -10%) rotate(-2deg) scale(1.08);
+.cursor-pencil-eraser {
+  left: 17px;
+  top: 7px;
+  width: 5px;
+  height: 8px;
+  border: 1.5px solid #111111;
+  border-left: 0;
+  border-radius: 0 999px 999px 0;
+  background: #ffffff;
+}
+
+.paint-cursor.is-pressed .cursor-pencil {
+  transform: rotate(-20deg) scale(0.95);
 }
 
 .falling-orbs {
@@ -413,18 +433,6 @@ a {
 
   100% {
     transform: translate3d(var(--orb-drift), 120vh, 0);
-  }
-}
-
-@keyframes droplet-fade {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.95;
-  }
-
-  100% {
-    transform: translate3d(var(--drift-x), var(--drift-y), 0) scale(0.2);
-    opacity: 0;
   }
 }
 

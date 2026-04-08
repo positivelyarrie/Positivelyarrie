@@ -155,13 +155,11 @@ function setupCustomCursor() {
   }
 
   const cursor = document.getElementById("paint-cursor");
-  const droplets = document.getElementById("paint-droplets");
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
   let cursorX = mouseX;
   let cursorY = mouseY;
-  let lastDropTime = 0;
 
   document.body.classList.add("has-custom-cursor");
 
@@ -172,47 +170,13 @@ function setupCustomCursor() {
     window.requestAnimationFrame(animateCursor);
   };
 
-  const spawnDroplet = (x, y) => {
-    const droplet = document.createElement("span");
-    droplet.className = "paint-droplet";
-    const size = 4 + Math.random() * 12;
-    const driftX = -28 - Math.random() * 36;
-    const driftY = -4 + Math.random() * 18;
-    const hue = [0, 18, 42, 100, 212, 268][Math.floor(Math.random() * 6)];
-
-    droplet.style.left = `${x}px`;
-    droplet.style.top = `${y}px`;
-    droplet.style.width = `${size}px`;
-    droplet.style.height = `${size}px`;
-    droplet.style.setProperty("--drift-x", `${driftX}px`);
-    droplet.style.setProperty("--drift-y", `${driftY}px`);
-    droplet.style.background = `hsla(${hue}, 88%, 58%, 0.9)`;
-    droplets.appendChild(droplet);
-
-    window.setTimeout(() => {
-      droplet.remove();
-    }, 900);
-  };
-
   window.addEventListener("mousemove", (event) => {
     mouseX = event.clientX;
     mouseY = event.clientY;
-
-    const now = performance.now();
-    if (now - lastDropTime > 28) {
-      spawnDroplet(event.clientX - 10, event.clientY + 6);
-      if (Math.random() > 0.45) {
-        spawnDroplet(event.clientX - 22, event.clientY + 10);
-      }
-      lastDropTime = now;
-    }
   });
 
   window.addEventListener("mousedown", () => {
     cursor.classList.add("is-pressed");
-    for (let index = 0; index < 4; index += 1) {
-      spawnDroplet(mouseX - 8 + index * 3, mouseY + 8);
-    }
   });
 
   window.addEventListener("mouseup", () => {
