@@ -23,7 +23,9 @@ function renderHero(hero) {
   document.title = config.siteName;
   document.getElementById("brand-link").textContent = config.siteName;
   document.getElementById("hero-location").textContent = hero.location;
-  document.getElementById("hero-kicker").textContent = hero.kicker;
+  document.getElementById("hero-kicker").innerHTML = hero.kicker
+    .replace("brand", "<em>brand</em>")
+    .replace("mark", "<em>mark</em>");
   document.getElementById("hero-title").textContent = hero.title;
   document.getElementById("hero-copy").textContent = hero.copy;
 
@@ -40,7 +42,12 @@ function renderHero(hero) {
 }
 
 function renderFallingOrbs() {
-  const palette = ["#d62828", "#f77f00", "#fcbf49", "#7cb518", "#3a86ff", "#8338ec"];
+  const palette = [
+    "rgba(255, 255, 255, 0.16)",
+    "rgba(215, 219, 247, 0.18)",
+    "rgba(198, 204, 214, 0.14)",
+    "rgba(255, 255, 255, 0.1)"
+  ];
   const orbCount = 24;
   const container = document.getElementById("falling-orbs");
 
@@ -134,6 +141,23 @@ function renderContact(contact) {
     .join("");
 }
 
+function applyRainbowPanels() {
+  const palette = [
+    "rgba(255, 59, 48, 0.12)",
+    "rgba(255, 149, 0, 0.12)",
+    "rgba(255, 214, 10, 0.12)",
+    "rgba(50, 215, 75, 0.12)",
+    "rgba(10, 132, 255, 0.12)",
+    "rgba(94, 92, 230, 0.12)",
+    "rgba(191, 90, 242, 0.12)"
+  ];
+
+  const panels = [...document.querySelectorAll(".project-card, .card, .contact-link")];
+  panels.forEach((panel, index) => {
+    panel.style.setProperty("--panel-tint", palette[index % palette.length]);
+  });
+}
+
 function setupReveal() {
   const observer = new IntersectionObserver(
     (entries) => {
@@ -147,6 +171,59 @@ function setupReveal() {
   );
 
   document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+}
+
+function setupScrollEffects() {
+  const progressBar = document.getElementById("scroll-progress-bar");
+  const heroTitle = document.getElementById("hero-title");
+  const heroCopyWrap = document.querySelector(".hero-copy-wrap");
+  const heroMarquee = document.querySelector(".hero-marquee");
+  const cards = [...document.querySelectorAll(".project-card, .card, .contact-link")];
+
+  let ticking = false;
+
+  const updateScrollEffects = () => {
+    const scrollTop = window.scrollY;
+    const maxScroll = Math.max(document.body.scrollHeight - window.innerHeight, 1);
+    const progress = Math.min(scrollTop / maxScroll, 1);
+    const heroShift = Math.min(scrollTop * 0.08, 36);
+
+    progressBar.style.width = `${progress * 100}%`;
+
+    if (heroTitle) {
+      heroTitle.style.transform = `translate3d(0, ${heroShift * -0.32}px, 0)`;
+    }
+
+    if (heroCopyWrap) {
+      heroCopyWrap.style.transform = `translate3d(0, ${heroShift * 0.18}px, 0)`;
+    }
+
+    if (heroMarquee) {
+      heroMarquee.style.transform = `translate3d(0, ${heroShift * 0.12}px, 0)`;
+    }
+
+    cards.forEach((card, index) => {
+      const rect = card.getBoundingClientRect();
+      const viewportCenter = window.innerHeight * 0.55;
+      const distance = rect.top + rect.height / 2 - viewportCenter;
+      const offset = Math.max(Math.min(distance * -0.02, 16), -16);
+      const rotate = ((index % 2 === 0 ? 1 : -1) * offset) / 24;
+      card.style.transform = `translate3d(0, ${offset}px, 0) rotate(${rotate}deg)`;
+    });
+
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateScrollEffects);
+      ticking = true;
+    }
+  };
+
+  updateScrollEffects();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
 }
 
 function setupCustomCursor() {
@@ -194,5 +271,7 @@ renderAbout(config.about);
 renderProjects(config.projects);
 renderServices(config.services);
 renderContact(config.contact);
+applyRainbowPanels();
 setupReveal();
+setupScrollEffects();
 setupCustomCursor();

@@ -1,5 +1,5 @@
 window.portfolioConfig = {
-  siteName: "AIR Studios",
+  siteName: "Airmark",
   navigation: [
     { label: "About", href: "#about" },
     { label: "Work", href: "#work" },
@@ -7,111 +7,116 @@ window.portfolioConfig = {
     { label: "Contact", href: "#contact" }
   ],
   theme: {
-    background: "#ffffff",
-    backgroundAccent: "#f5f5f5",
-    surface: "rgba(255, 255, 255, 0.82)",
-    text: "#191919",
-    muted: "#5f5a52",
-    line: "rgba(25, 25, 25, 0.12)",
-    accent: "#d62828",
-    accentSoft: "#ffe1d6"
+    background: "#06070b",
+    backgroundAccent: "#10131a",
+    surface: "rgba(245, 247, 255, 0.08)",
+    text: "#f5f7ff",
+    muted: "#a3aabc",
+    line: "rgba(255, 255, 255, 0.14)",
+    accent: "#d7dbf7",
+    accentSoft: "rgba(255, 255, 255, 0.1)",
+    chrome: "#d9dde8",
+    holoA: "rgba(255, 255, 255, 0.24)",
+    holoB: "rgba(207, 216, 232, 0.18)",
+    holoC: "rgba(255, 255, 255, 0.1)"
   },
   hero: {
-    location: "Based in OHIO / Working worldwide",
-    kicker: "Creative Developer + Digital Designer",
-    title: "Immersive websites with a cinematic point of view.",
+    location: "Cleveland, Ohio / Networking internationally",
+    kicker: "We build the brand. You make the mark.",
+    title: "Refined branding for ambitious businesses.",
     copy:
-      "AIR Studios creates expressive digital experiences for brands that want clarity, atmosphere, and a stronger visual identity online.",
+      "Airmark builds polished brand systems, visual identities, and digital experiences that help ambitious businesses look sharper, feel more credible, and grow with intention.",
     primaryAction: {
-      label: "See Projects",
+      label: "View Work",
       href: "#work"
     },
     secondaryAction: {
-      label: "Email Me",
-      href: "mailto:Create@AirStudios.com"
+      label: "Start a Project",
+      href: "#contact"
     },
     marquee: [
-      "Direction",
-      "Motion",
-      "WebGL-ready layout",
-      "Editorial design",
-      "Custom storytelling"
+      "Strategic branding",
+      "Visual identity systems",
+      "Campaign direction",
+      "Web design",
+      "Growth-focused storytelling",
+      "Luxury minimalism"
     ]
   },
   about: {
     lead:
-      "AIR Studios designs and builds websites that feel polished, story-driven, and unmistakably intentional.",
+      "Airmark is a strategic branding and marketing agency dedicated to building distinctive, high-impact visual identities for modern businesses.",
     details: [
-      "From portfolio launches to brand showcases, each site is shaped around motion, pacing, and a strong first impression.",
-      "The goal is simple: create digital spaces that feel elevated, modern, and easy to explore.",
-      "Every project is built to balance visual personality with clear structure, responsive performance, and thoughtful user flow."
+      "The firm blends creativity with analytical thinking to produce work that is both visually compelling and strategically effective.",
+      "Airmark works across branding, design, and marketing strategy to help organizations build longevity across markets and cultures.",
+      "As the company grows, its long-term direction includes expanding creative and strategic services, increasing community outreach, and investing in support for the arts."
     ]
   },
   projects: [
     {
       index: "01",
-      title: "Pulse Riot",
-      category: "Music + entertainment",
+      title: "Brand Systems",
+      category: "Identity direction",
       year: "2026",
       summary:
-        "A bold launch concept for an entertainment brand with artist promotion, event storytelling, and fan-first digital campaigns.",
-      link: "./pulse-riot.html"
+        "Build naming, positioning, typography, and visual language into a coherent identity system that scales across digital and physical touchpoints.",
+      link: "#contact"
     },
     {
       index: "02",
-      title: "Saffron Table",
-      category: "Restaurant brand",
-      year: "2025",
+      title: "Campaign Presence",
+      category: "Digital rollout",
+      year: "2026",
       summary:
-        "A modern restaurant concept site with menus, reservations, and a warm hospitality-first visual identity.",
-      link: "./saffron-table.html"
+        "Shape launch pages and marketing surfaces that feel polished, contemporary, and credible from the first scroll.",
+      link: "#services"
     },
     {
       index: "03",
-      title: "NovaMed Direct",
-      category: "Medical device sales",
-      year: "2025",
+      title: "Growth Clarity",
+      category: "Conversion strategy",
+      year: "2026",
       summary:
-        "A B2B sales concept for medical devices focused on product clarity, trust, and distributor lead generation.",
-      link: "./novamed-direct.html"
+        "Translate complex offerings into sharper messaging, cleaner hierarchy, and stronger lead-generation pathways.",
+      link: "#contact"
     }
   ],
   services: [
     {
-      title: "Portfolio Design",
+      title: "Marketing",
       description:
-        "Art direction, layout systems, and visual language for personal or studio websites."
+        "Marketing built to perform, not just impress. Airmark creates sharp brand strategies, elevated visuals, and targeted campaigns that move your business forward. We focus on clarity, positioning, and execution, so you attract the right audience, increase conversions, and scale with confidence."
     },
     {
-      title: "Frontend Development",
+      title: "Branding",
       description:
-        "Responsive implementation with reusable sections and simple content management."
+        "Branding that defines how you are seen and remembered. Airmark builds distinctive visual identities and strategic foundations that position your brand with clarity and authority. From logos to full brand ecosystems, we create cohesive, scalable identities that resonate with your audience, strengthen recognition, and set you apart in competitive markets."
     },
     {
-      title: "Motion Direction",
+      title: "Consulting",
       description:
-        "Intentional transitions, scroll reveals, and atmosphere without overwhelming the content."
+        "Consulting that transforms insight into action. Airmark delivers strategic guidance backed by in-depth demographic research and market intelligence to position your brand with precision. We identify who your audience is, how they think, and where you win, translating data into clear direction, stronger positioning, and smarter decisions that drive measurable growth."
     }
   ],
   contact: {
-    title: "Let’s build something that feels unmistakably yours.",
+    title: "Build a brand presence that feels elevated from the first interaction.",
     copy:
-      "For creative direction, website design, and custom digital builds, get in touch and let’s start the conversation.",
+      "Airmark partners with businesses that need stronger positioning, sharper creative direction, and a digital presence that feels modern, polished, and built to scale.",
     links: [
       {
         label: "Email",
-        value: "Create@AirStudios.com",
-        href: "mailto:Create@AirStudios.com"
+        value: "ClientSupport@theAirmark.com",
+        href: "mailto:ClientSupport@theAirmark.com"
       },
       {
-        label: "Instagram",
-        value: "AirStudios.co",
-        href: "https://instagram.com/AirStudios.co"
+        label: "Phone",
+        value: "(440) 730-1247",
+        href: "tel:+14407301247"
       },
       {
-        label: "LinkedIn",
-        value: "AirStudios",
-        href: "https://linkedin.com/company/airstudios"
+        label: "Location",
+        value: "Cleveland, Ohio",
+        href: "https://theairmark.com"
       }
     ]
   }
